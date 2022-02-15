@@ -104,7 +104,7 @@ call_cf_v4()
 			echo "<<< curl -X $method ${curl_opts[*]} $APIv4_ENDPOINT$path$querystring" >&2
 		fi
 		
-		output=`curl -sS -H "X-Auth-Email: $CF_ACCOUNT" -H "X-Auth-Key: $CF_TOKEN" \
+		output=`curl -sS -H "X-Auth-Email: $CF_ACCOUNT" -H "Authorization: Bearer $CF_TOKEN" \
 			-X "$method" "${curl_opts[@]}" \
 			"$APIv4_ENDPOINT$path$querystring" | json_decode "$@"`
 		exitcode=$?
